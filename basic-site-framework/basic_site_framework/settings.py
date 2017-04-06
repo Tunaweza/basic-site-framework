@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'basic_site_framework.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '', #set the database name here
+        'NAME': 'basic_site_framework', #set the database name here
         'USER': '', #set the database username here
         'PASSWORD': '', #set the database password here
         'HOST': '', #set the database host here
