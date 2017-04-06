@@ -23,4 +23,5 @@ A basic platform based on Django for powering a website. It has very minimal CMS
 10. Migrate the database and install the base data `python manage.py migrate` from the base-site-framework/base-site-framework directory
 11. Create a super user for the site `python manage.py createsuperuser`
 12. Go to base-site-framework/staticwork and run `bower install`
-13. Set up a web hosting deamon for the django app, or run the app in dev mode by changing `DEBUG=False` to `DEBUG=True` in settings.py
+13. Collect the static js, css, and image files with `python manage.py collectstatic`
+14. Set up a web hosting deamon for the django app, or run the app in dev mode by changing `DEBUG=False` to `DEBUG=True` in settings.py
