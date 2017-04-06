@@ -1,0 +1,137 @@
+{% load static %}
+{% load menu_tags %}
+{% load snippet_tags %}
+{% get_menu "top-menu" as menu_items %}
+{% get_active_menu_item menu_items as active_menu_item %}
+{% get_snippets active_menu_item "left_content_col" as left_content_col_snippets %}
+{% get_snippets active_menu_item "right_content_col" as right_content_col_snippets %}
+{% get_snippets active_menu_item "jumbotron" as jumbotron_snippets %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% if page %}
+        {% if page.meta_description %}
+            <meta name="description" content="{{ page.meta_description }}">
+        {% endif %}
+        {% if page.meta_author %}
+            <meta name="author" content="{{ page.meta_author }}">
+        {% endif %}
+        {% if page.meta_keywords %}
+            <meta name="keywords" content="{{ page.meta_keywords }}">
+        {% endif %}
+    {% endif %}
+
+    <link rel="icon" href="{% static "images/favicon.ico" %}">
+
+    <title>{% block page_title %}Company name{% endblock %}</title>
+
+    <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+    <script src="{% static "bower_components/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bower_components/bootstrap/dist/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "bower_components/bootstrap/dist/css/bootstrap-theme.min.css" %}">
+    <link href="{% static "css/ie10-viewport-bug-workaround.css" %}" rel="stylesheet">
+    <link href="{% static "css/justified-nav.css" %}" rel="stylesheet">
+    <link href="{% static "css/theme.css" %}" rel="stylesheet">
+    <script src="{% static "js/theme.js" %}"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="{% static "js/html5shiv.js" %}"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- The justified navigation menu is meant for single line per list item.
+         Multiple lines will require custom code not provided by Bootstrap. -->
+    <div class="masthead">
+        <div class="nav_logo_container">
+            <img src="{% static "images/logo.png" %}" class="nav_logo" />
+        </div>
+        <nav>
+            <ul class="nav nav-justified">
+                {% for item in menu_items %}
+                    <li
+                            {% if item.active %} class="active" {% endif %}
+                    ><a href="{{ item.link }}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="jumbotron_clear">
+
+    <!-- Jumbotron -->
+    {% for snippet in jumbotron_snippets %}
+        <div class="jumbotron" onclick="jumbotron_slide_left({{ forloop.counter0 }})">
+            <h1>{{ snippet.heading }}</h1>
+            {{ snippet.content | safe }}
+        </div>
+    {% endfor %}
+</div>
+
+<div class="container">
+
+    <!-- Example row of columns -->
+    <div class="row">
+        {% if left_content_col_snippets %}
+            <div class="col-lg-3">
+                {% for snippet in left_content_col_snippets %}
+                    <div>
+                        <h2>{{ snippet.heading }}</h2>
+                        {{ snippet.content | safe }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="
+            {% if left_content_col_snippets and right_content_col_snippets %}
+                col-lg-6
+            {% elif left_content_col_snippets and not right_content_col_snippets %}
+                col-lg-9
+            {% elif not left_content_col_snippets and right_content_col_snippets %}
+                col-lg-9
+            {% elif not left_content_col_snippets and not right_content_col_snippets %}
+                col-lg-12
+            {% endif %}
+        ">
+                {% block content %}{% endblock %}
+        </div>
+        {% if right_content_col_snippets %}
+            <div class="col-lg-3">
+                {% for snippet in right_content_col_snippets %}
+                    <div>
+                        <h2>{{ snippet.heading }}</h2>
+                        {{ snippet.content | safe }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Site footer -->
+    <footer class="footer">
+        <p>&copy; 2016 Company, Inc.</p>
+    </footer>
+
+</div> <!-- /container -->
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{% static "js/ie10-viewport-bug-workaround.js" %}"></script>
+</body>
+</html>
+

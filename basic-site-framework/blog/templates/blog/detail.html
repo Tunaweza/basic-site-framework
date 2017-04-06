@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="blog_item">
+        <h1 class="blog_item_heading">{{ object.title }}</h1>
+        <div class="blog_item_content">{{ object.content | safe }}</div>
+    </div>
+{% endblock %}

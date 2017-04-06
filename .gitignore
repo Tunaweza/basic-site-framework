@@ -1,0 +1,5 @@
+venv/
+.idea
+*.pyc
+basic-site-framework/staticwork/bower_components/*
+basic-site-framework/static/*

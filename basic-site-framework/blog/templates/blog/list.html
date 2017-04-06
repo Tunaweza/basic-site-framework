@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for item in object_list %}
+        <div class="blog_list_item">
+            <h3 class="blog_list_item_heading"><a href="{% url 'blog_detail' item.pk item.slug %}">{{ item.title }}</a></h3>
+            <div class="blog_list_item_preview"><p>{{ item.content | striptags | truncatewords:100 }}</p></div>
+        </div>
+    {% endfor %}
+{% endblock %}
