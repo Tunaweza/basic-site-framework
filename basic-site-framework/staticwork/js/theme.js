@@ -1,19 +1,19 @@
 
 function Jumbotron() {
-    this.elements = [];
+    var elements = [];
 
     function Jumbotron() {
-        this.elements = jQuery('.jumbotron').toArray();
+        elements = jQuery('.jumbotron').toArray();
     }
 
     this.slide_left = function(index) {
-        jQuery(this.elements[index]).animate({
+        jQuery(elements[index]).animate({
             left: -window.innerWidth
         }, 1000);
     };
 
     this.move_to_right = function(index) {
-        jQuery(this.elements[index]).css({
+        jQuery(elements[index]).css({
             left: window.innerWidth
         });
     };

@@ -70,17 +70,18 @@
         </nav>
     </div>
 </div>
+{% if jumbotron_snippets %}
+    <div class="jumbotron_clear">
 
-<div class="jumbotron_clear">
-
-    <!-- Jumbotron -->
-    {% for snippet in jumbotron_snippets %}
-        <div class="jumbotron" onclick="jumbotron_slide_left({{ forloop.counter0 }})">
-            <h1>{{ snippet.heading }}</h1>
-            {{ snippet.content | safe }}
-        </div>
-    {% endfor %}
-</div>
+        <!-- Jumbotron -->
+        {% for snippet in jumbotron_snippets %}
+            <div class="jumbotron" onclick="j.slide_left({{ forloop.counter0 }})">
+                <h1>{{ snippet.heading }}</h1>
+                {{ snippet.content | safe }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 
 <div class="container">
 
