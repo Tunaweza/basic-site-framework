@@ -25,3 +25,7 @@ A basic platform based on Django for powering a website. It has very minimal CMS
 12. Go to base-site-framework/staticwork and run `bower install`
 13. Collect the static js, css, and image files with `python manage.py collectstatic`
 14. Set up a web hosting deamon for the django app, or run the app in dev mode by changing `DEBUG=False` to `DEBUG=True` in settings.py
+
+
+### NOTES
+Setup steps 10-13 can be completed by running the `./setup.sh` script, it will automatically insert dummy data too.
