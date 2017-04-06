@@ -1,0 +1,21 @@
+{
+  "name": "staticwork",
+  "authors": [
+    "Mark Hatchell <mark.hatchell@tunaweza.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
