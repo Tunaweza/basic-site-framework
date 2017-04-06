@@ -29,3 +29,40 @@ A basic platform based on Django for powering a website. It has very minimal CMS
 
 ### NOTES
 Setup steps 10-13 can be completed by running the `./setup.sh` script, it will automatically insert dummy data too.
+
+
+# Menu
+Menus can be created and displayed any where in a template. Menu items are attached to a menu and orderable, also menu items can have permissions such as public, admin only, logged in, and not logged in.
+
+When created a menu item choose the menu that it belongs to, enter a title for the menu item that will be displayed as the link text, enter the route for the menu item, and choose the menu item visibility permissions.
+
+Menu items will automatically have the `active` class added to the parent li when their link matches the current route.
+
+# Pages
+Pages are simply items that have a page title and content. Pages also can display meta information such as keywords, description, and author.
+
+When creating a page enter a title for the page, a slug which will be used for the link in automatic link generation for SEO friendly urls, meta data, and page content in HTML.
+
+Slugs should always be lowercase, alphanumaric and use `-` for ` `(spaces). 
+
+The default routes for pages will always be the toplevel of the domain/id-slug/
+
+example: `example.com/1-first-page`
+
+The the id and slug for the menu routes followed by a trailing `/`.
+
+# Blog
+The blog is a very basic colection of posts.
+
+When creating a blog post enter the title, slug, meta data, and content in the same manner as pages.
+
+The only real difference between blog posts and pages is that the blog list page will show a list of posts.
+
+# Snippets
+Snippets are widgets that can be dislpayed on pages based upon routes and positions.
+
+To posisiton a snippet enter the position name from one of the predefined posistions below.
+
+ - left\_content\_col - displayed to the left of the main page content.
+ - right\_content\_col - displayed to the right of the main page content.
+ - jumbotron - displayed above the content at full page width
